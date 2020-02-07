@@ -5,8 +5,8 @@
 
   "name": "WordGame by BetaFactory",
   "short_name": "wordgame",
-  "description": "Practice vocabulary like a champ",
-  "version": "1.0",
+  "description": "Practice vocabulary like a champ.",
+  "version": "2.0",
   "icons": { 
     "16": "/images/logo.png",
     "48": "/images/logo.png",

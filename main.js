@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+  // Helpers //
+
   var randBetween = function(start, end) {
     return Math.floor(Math.random() * end) + start;
   };
@@ -8,6 +10,9 @@ $(document).ready(function() {
     return html.replace(/(<([^>]+)>)/ig, '').split(":")[0];
   };
 
+  // Pronunciation //
+
+  // Prepare <audio> tag for playback
   var setupAudioPlayer = function(audioUrl) {
     var $player =  $(".audio-playback");
     var player = $player[0]
@@ -28,9 +33,9 @@ $(document).ready(function() {
     });
   }
 
+  // Retrieve audio pronunciation URL from Wordnik and trigger player setup
   var setupAudio = function(word) {
-    console.log(word)
-    apiKey = "";
+    apiKey = "rce897rlum8g7wn0otc3b9ut0b5yu11cu1nt8b9ir4t8wg0kv";
     apiUrl = "http://api.wordnik.com:80/v4/word.json/" + word + "/audio?useCanonical=true&limit=3&api_key=" + apiKey;
     $.ajax({
       url: apiUrl,
@@ -43,27 +48,21 @@ $(document).ready(function() {
     });
   }
 
+  // Main App //
+
+  // Retrieve random word and update HTML
   var successCallback = function(data) {
     wordCount = data.length - 1;
     wordIndex = randBetween(0, wordCount);
-    wordData = data;
+    wordData = data[wordIndex].back;
 
     $(".loading").hide();
 
-    $("#word").text(
-      wordData["word"].toLowerCase().replace(/\b[a-z]/g, function(letter) {
-        return letter.toUpperCase();
-      })
-    );
-    $(".page-title").html(
-      wordData["word"].toLowerCase().replace(/\b[a-z]/g, function(letter) {
-        return letter.toUpperCase();
-      })
-    );
-    $("#definition").html(wordData["descriptors"][0].definition);
-    $("#partofspeech").html(wordData["descriptors"][0].partOfSpeech);
-    $("#sentence").html(wordData["descriptors"][0].examples[0]);
-    $("#pronounce").data('word', wordData["word"])
+    $("#word").text(wordData[0].content);
+    $(".page-title").html(wordData[0].content + " (" + stripTags(wordData[1].content) + ")");
+    $("#definition").html(wordData[1].content);
+    $("#sentence").html(wordData[2].content);
+    $("#pronounce").data('word', wordData[0].content)
 
     if (!navigator.onLine) {
       $(".player").removeClass("player-ready");
@@ -72,13 +71,18 @@ $(document).ready(function() {
     }
   };
 
+  // Attach event listener to pronunciation button
   $("#pronounce").click(function(e) {
     var word = $(e.currentTarget).data('word');
+
+    // Only setup audio player if they have internet
     if (navigator.onLine) {
+      // TODO: add a URL cache here to avoid multiple API calls
       setupAudio(word);
     }
   });
 
-  $.get('http://apis.wordgame.betafactory.tech/api/general/random/word', successCallback);
+  // Load word content from JSON file
+  $.getJSON('words.json', successCallback);
 
 });
