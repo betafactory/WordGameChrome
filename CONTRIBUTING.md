@@ -1,4 +1,4 @@
-Contributing to WordGameChrome
+##Contributing to WordGameChrome
 Thank you for taking the time to contribute to WordGame! ✨
 
 We are pleased to open up the project to you - our community. How can you contribute?
