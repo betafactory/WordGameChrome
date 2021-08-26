@@ -7,7 +7,7 @@ Improve translations
 We are introducing support for additional languages and would like your help in improving the translations. Please see improving translations for how you can help us.
 
 Share feedback
-Contact us at support+wordgame@betafactory.tech if you have feedback, questions or want to chat. You can also use the feedback form embedded within our Mobile App - to do so please navigate to Settings and select "Leave Feedback".
+Contact us at support+wordgame.ducklinglabs.com if you have feedback, questions or want to chat. You can also use the feedback form embedded within our Mobile App - to do so please navigate to Settings and select "Leave Feedback".
 
 Report an issue
 A great way to contribute to the project is to report an issue when you encounter a problem.
@@ -21,7 +21,7 @@ Android version
 Steps to reproduce the bug
 Expected behavior
 Actual behavior
-If you have encountered a security issue, please reach us through support+wordgame@betafactory.tech.
+If you have encountered a security issue, please reach us through support+wordgame.ducklinglabs.com.
 
 Contribute Code
 We welcome pull requests aimed at fixing bugs and security issues. We have also labeled tasks you can help with as help wanted.
