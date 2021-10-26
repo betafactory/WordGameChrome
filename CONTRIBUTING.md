@@ -21,7 +21,7 @@ Android version
 Steps to reproduce the bug
 Expected behavior
 Actual behavior
-If you have encountered a security issue, please reach us through support+wordgame.ducklinglabs.com.
+If you have encountered a security issue, please reach us through support+wordgame@ducklinglabs.com.
 
 Contribute Code
 We welcome pull requests aimed at fixing bugs and security issues. We have also labeled tasks you can help with as help wanted.
